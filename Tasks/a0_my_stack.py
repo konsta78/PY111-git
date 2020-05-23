@@ -1,8 +1,9 @@
 """
-My little Stack!!!
+My little Stack
 """
 from typing import Any
 
+stack = []
 
 def push(elem: Any) -> None:
     """
@@ -11,7 +12,8 @@ def push(elem: Any) -> None:
     :param elem: element to be pushed
     :return: Nothing
     """
-    print(elem)
+    global stack
+    stack.insert(0, elem)
     return None
 
 
@@ -21,7 +23,13 @@ def pop() -> Any:
 
     :return: popped element
     """
-    return None
+    global stack
+    if stack:
+        pop_elem = stack[0]
+        del(stack[0])
+    else:
+        pop_elem = None
+    return pop_elem
 
 
 def peek(ind: int = 0) -> Any:
@@ -31,8 +39,12 @@ def peek(ind: int = 0) -> Any:
     :param ind: index of element (count from the top, 0 - top, 1 - first from top, etc.)
     :return: peeked element or None if no element in this place
     """
-    print(ind)
-    return None
+    global stack
+    if ind <= len(stack):
+        peek = stack[ind]
+    else:
+        peek = None
+    return peek
 
 
 def clear() -> None:
@@ -41,4 +53,15 @@ def clear() -> None:
 
     :return: None
     """
+    global stack
+    stack = []
     return None
+
+if __name__ == "__main__":
+    push(10)
+    print(stack)
+    push(7)
+    print(stack)
+    print(pop(), stack)
+    print(peek(0), stack)
+    print(clear(), stack)
