@@ -3,39 +3,43 @@ My little Stack
 """
 from typing import Any
 
-stack = [1, 3, 5, 7]
-#stack.remove()
+stack = []
 
-def push(stack, elem: Any) -> None:
+def push(elem: Any) -> None:
     """
     Operation that add element to stack
 
     :param elem: element to be pushed
     :return: Nothing
     """
-    stack.append(elem)
-    #print(elem)
-    return stack
+    global stack
+    stack.insert(0, elem)
+    return None
 
 
-def pop(stack) -> Any:
+def pop() -> Any:
     """
     Pop element from the top of the stack. If not elements - should return None.
 
     :return: popped element
     """
-    last_elem = stack[-1]
-    stack.pop()
-    return last_elem
+    global stack
+    if stack:
+        pop_elem = stack[0]
+        del(stack[0])
+    else:
+        pop_elem = None
+    return pop_elem
 
 
-def peek(stack, ind: int = 0) -> Any:
+def peek(ind: int = 0) -> Any:
     """
     Allow you to see at the element in the stack without popping it.
 
     :param ind: index of element (count from the top, 0 - top, 1 - first from top, etc.)
     :return: peeked element or None if no element in this place
     """
+    global stack
     if ind <= len(stack):
         peek = stack[ind]
     else:
@@ -43,19 +47,21 @@ def peek(stack, ind: int = 0) -> Any:
     return peek
 
 
-def clear(stack) -> None:
+def clear() -> None:
     """
     Clear my stack
 
     :return: None
     """
+    global stack
     stack = []
-    return stack
+    return None
 
-push(stack, 9)
-print(stack)
-last_elem = pop(stack)
-print(stack, last_elem)
-print(clear(stack))
-print(peek(stack, 2))
-print(peek(stack, 8))
+if __name__ == "__main__":
+    push(10)
+    print(stack)
+    push(7)
+    print(stack)
+    print(pop(), stack)
+    print(peek(0), stack)
+    print(clear(), stack)
