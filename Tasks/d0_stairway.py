@@ -32,7 +32,8 @@ def stairway_path_from_end_to_start(stairway):
 
     return sum_cost[-1]
 
-# рекурсия (с мемонизацией)
+
+# рекурсия
 def lazy_stairway_path(stairway, len_stairway):
     if len_stairway == 0:
         return stairway[0]
@@ -57,5 +58,5 @@ if __name__ == "__main__":
     n3 = [1, 5, 3, -6, 7, -9, 0, 2, 5]
     print(stairway_path(n3))
     print(stairway_path_from_end_to_start(n3))
-    print(lazy_stairway_path(n3, len(n3) - 1))
+    print(lazy_stairway_path(n3, len(n3)-1))
 
