@@ -13,7 +13,6 @@ def bfs(g: nx.Graph, start_node: Hashable) -> List[Hashable]:
     :return: list of nodes in the visited order
     """
     visited = {node: False for node in g.nodes} # посещенные вершины
-    start_node = start_node # начальная нода (в нашем случае - 'A')
     visited[start_node] = True # записали стартовую ноду в список посещенных
     queue = [start_node] # создали очередь для посещения
     list_out = [] # список посещенных нод
