@@ -29,4 +29,4 @@ if __name__ == "__main__":
     # a = np.zeros((m, n))
     # print(a)
     #calculate_paths((8, 8), (0, 7))
-    print(calculate_paths((6, 6), (0, 0)))
+    print(calculate_paths((8, 8), (0, 0)))
